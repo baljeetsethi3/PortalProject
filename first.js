@@ -2,9 +2,16 @@ var http = require("http");
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var urlencodedParser = bodyParser.urlencoded({ extended: true });
+//var urlencodedParser = bodyParser.urlencoded({ extended: true });
 var mysql = require('mysql');
 var fs=require('fs');
+var enc=require('bcrypt');
+var jwt=require('jsonwebtoken');
+var config=require('./configjwt.js');
+var mid=require('./middlewarejwt.js');
+var uenp = bodyParser.urlencoded({ extended: true });
+var url = require('url');
+var uni="baljeet";
 
 //mysql connection
 var con = mysql.createConnection({
@@ -24,7 +31,7 @@ var con = mysql.createConnection({
 var server = app.listen(8080, function () {
   var host = server.address().address
   var port = server.address().port
-  console.log("Example app listening at %s:%s Port", host, port)
+  console.log("listening at %s Port", port)
 });
 
 //apps to handle various events 
@@ -42,6 +49,17 @@ app.get('/',function(req,res)
 	});
 });
 
+app.use('/welcome',mid.checkToken,function(req,res){
+		res.write('Welcome!');
+		res.end();
+		//console.log("Welcome");
+		});
+
+app.use(bodyParser.urlencoded({ // Middleware
+    extended: true
+  }));
+  app.use(bodyParser.json());
+  
 //signup page
 app.get('/signup', function (req, res) {
 	fs.readFile("signup.html",function(err,data){
@@ -55,7 +73,7 @@ app.get('/signup', function (req, res) {
 });
 
 //event for sign up
-app.post('/thank', urlencodedParser, function (req, res){
+app.post('/thank',uenp, function (req, res){
 	var name=req.body.name;
 	var email=req.body.email;
 	var username=req.body.username;
@@ -95,13 +113,18 @@ app.post('/thank', urlencodedParser, function (req, res){
 	});
 	}
 	else{
-	var q="INSERT INTO register(email,username,password,name,phone) VALUES (" + '"'+ email +'"'+ ',' +'"'+ username +'"'+ ',' +'"'+ password +'"'+ ',' +'"'+ name +'"'+ ',' +'"'+ phone +'"'+ ")";
+		enc.hash(password,10,function(err,hash){
+	var q="INSERT INTO register(email,username,password,name,phone) VALUES (" + '"'+ email +'"'+ ',' +'"'+ username +'"'+ ',' +'"'+ hash +'"'+ ',' +'"'+ name +'"'+ ',' +'"'+ phone +'"'+ ")";
 		con.query(q,function(err,result)
 					{
-					console.log("Added");
+					console.log("added");
 					}
 				);
-	res.send("Thanks");
+		});
+	 var token = jwt.sign({username:uni},config.secret,{expiresIn:'10'});
+	//req.json({success:true,message:'Authentication successful',token:token});
+	//res.set('x-access-token',token);
+	res.redirect('/welcome?token='+token);
 	}
 	});
 	});
@@ -120,6 +143,8 @@ app.post('/thank', urlencodedParser, function (req, res){
 	}
 });
 
+
+
 app.get('/signin', function (req, res) {
 	fs.readFile("signin.html",function(err,data){
 		if(err)
@@ -131,7 +156,7 @@ app.get('/signin', function (req, res) {
 	});
 });
 
-app.post('/thank2', urlencodedParser, function (req, res){
+app.post('/thank2', uenp,function (req, res){
 	var username=req.body.username;
 	var password=req.body.password;
 	
@@ -153,7 +178,8 @@ app.post('/thank2', urlencodedParser, function (req, res){
 	{
 		var check2="Select * From register where username=" +'"'+username+'"';
 	con.query(check2,function(err,r,f){
-		if(r[0].password != password)
+		enc.compare(password,r[0].password,function(err,res1){
+		if(!res1)
 		{
 			fs.readFile("signin.html",function(err,data){
 		if(err)
@@ -167,10 +193,14 @@ app.post('/thank2', urlencodedParser, function (req, res){
 		}
 		else
 		{
-			res.writeHead(200, {'Content-Type': 'text/html'});
-			res.write("Welcome!!");
-			res.end();
+			var token = jwt.sign({username: uni},config.secret,{expiresIn:'10'});
+	//req.json({token:token});
+	//res.headers.add("x-access-token",token);
+	//console.log(token);
+	//console.log(res.headers['x-access-token']);
+res.redirect('/welcome?token='+token);
 		}
+		});
 	});
 	}
 });
