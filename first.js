@@ -17,7 +17,7 @@ var uni="baljeet";
 var con = mysql.createConnection({
 	host: "localhost",
 	user: "root",
-	password: "protista",
+	password: "123",
 	database: "user"
 	});
 
