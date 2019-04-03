@@ -39,8 +39,11 @@ body {
   position: relative;
   top: 50px;
   left: 10px;
-  text-shadow:2px 2px black;
+  text-shadow:1px 1px white;
   visibilty:visible;
+  color:white;
+  font-family:georgia ;
+  font-size:40px;
 }
 /* Add padding to containers */
 .container {
@@ -80,6 +83,7 @@ hr {
   cursor: pointer;
   width: 100%;
   opacity: 0.9;
+  border-radius:20px;
 }
 
 .registerbtn:hover {
@@ -95,6 +99,9 @@ a {
 .signin {
   background-color: #f1f1f1;
   text-align: center;
+  border-radius:10px;
+  margin-top:15px;
+  height:75px;
 }
 </style>
 </head>
@@ -102,10 +109,10 @@ a {
 <div class="bg-img">
 <div class="header">
 <img src="logo.jpg" alt="logo" />
-<h1>CSS-PEC</h1>
+<h1><b>ACM-CSS</b></h1>
 </div>
 <form action="/signup" method="post">
-  <div class="container">
+  <div class="container" style="border-radius:20px">
     <h1>Sign Up</h1>
     <hr>
     <label for="name"><b>Name</b></label>

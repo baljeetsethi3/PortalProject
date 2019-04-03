@@ -4,8 +4,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body, html {
-  height: 100%;
+  
   font-family: Arial, Helvetica, sans-serif;
+  margin:0px 0px 0px 0px;
+  padding:0px;
 }
 
 * {
@@ -14,9 +16,10 @@ body, html {
 
 .bg-img {
   margin-left:0px;
+  margin-top:0px;
   /* The image used */
   background-image: url("login.jpg");
-  height:743px;
+  height:840px;
   /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
@@ -24,6 +27,25 @@ body, html {
   position: relative;
 }
 
+.header img{
+ top:10px;
+ float: left;
+ width: 100px;
+ height:100px;
+ background: #555;
+ padding:2px;
+ margin-left:10px;
+ margin-top:20px;
+ border-radius:50px;
+ 
+}
+.header h1 {
+  position: relative;
+  left: 20px;
+  top: 45px;
+  text-shadow:1px 1px black;
+  visibilty:visible;
+}
 /* Add styles to the form container */
 .container {
   margin-top:100px;
@@ -34,6 +56,7 @@ body, html {
   height:400px;
   padding: 16px;
   background-color: white;
+  border-radius:25px;
 }
 
 /* Full-width input fields */
@@ -59,6 +82,7 @@ input[type=text]:focus, input[type=password]:focus {
   cursor: pointer;
   width: 100%;
   opacity: 0.9;
+  border-radius:20px;
 }
 
 .btn:hover {
@@ -68,17 +92,22 @@ input[type=text]:focus, input[type=password]:focus {
 </head>
 <body>
 <div class="bg-img">
-  <form action="/signin" method="post" class="container">
+<div class="header">
+<img src="logo.jpg" alt="logo" />
+<h1>ACM-CSS</h1>
+</div>
+  <form action="/thank2" class="container">
     <h1>Login</h1>
 
     <label for="username"><b>Username</b></label>
-    <input type="text" placeholder="Username" name="username" required>
+    <input type="text" placeholder="Username" name="Username" required>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Password" name="password" required>
+    <input type="password" placeholder="Password" name="Password" required>
 
     <button type="submit" class="btn">Login</button>
   </form>
+</div>
 </div>
 </body>
 </html>
