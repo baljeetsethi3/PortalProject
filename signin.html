@@ -2,84 +2,10 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script> 
-function validation()                                    
-{ 
-    var name = document.forms["signup"]["name"]; 
-	var username = document.forms["signup"]["username"]; 
-    var email = document.forms["signup"]["email"];        
-    var password = document.forms["signup"]["Password"];  
-    var phone = document.forms["signup"]["mobilno"];
-    if (name.value == "")                                  
-    { 
-        window.alert("Please enter your name."); 
-        name.focus(); 
-        return false; 
-    } 
-   
-    if (username.value == "")                               
-    { 
-        window.alert("Please enter your valid username."); 
-        name.focus(); 
-        return false; 
-    } 
-       
-    if (email.value == "")                                   
-    { 
-        window.alert("Please enter a valid e-mail address."); 
-        email.focus(); 
-        return false; 
-    } 
-   
-    if (email.value.indexOf("@", 0) < 0)                 
-    { 
-        window.alert("Please enter a valid e-mail address."); 
-        email.focus(); 
-        return false; 
-    } 
-   
-    if (email.value.indexOf(".", 0) < 0)                 
-    { 
-        window.alert("Please enter a valid e-mail address."); 
-        email.focus(); 
-        return false; 
-    } 
-   
-    if (password.value == "")                        
-    { 
-        window.alert("Please enter your password"); 
-        password.focus(); 
-        return false; 
-    } 
-	
-	if (cpassword.value == "")                        
-    { 
-        window.alert("Please enter your password"); 
-        cpassword.focus(); 
-        return false; 
-    } 
-	
-	if (cpassword.value != password.value)
-	{
-	    window.alert("Password and Confirm Password are not same.");
-		cpassword.focus();
-		return false;
-	}
-	
-	if (mobilno.value == "")                           
-    { 
-        window.alert("Please enter your telephone number."); 
-        phone.focus(); 
-        return false; 
-    } 
-   
-    return true; 
-}</script> 
-
 <style>
-body {
+body, html {
+  
   font-family: Arial, Helvetica, sans-serif;
-  background-color:black;
   margin:0px 0px 0px 0px;
   padding:0px;
 }
@@ -87,22 +13,25 @@ body {
 * {
   box-sizing: border-box;
 }
+
 .bg-img {
   margin-left:0px;
+  margin-top:0px;
   /* The image used */
-  background-image: url("signin3.jpg");
+  background-image: url("login.jpg");
   height:840px;
-  /* Center and scale the im
-  age nicely */
+  /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
 }
+
 .header img{
+ top:10px;
  float: left;
  width: 100px;
- height: 100px;
+ height:100px;
  background: #555;
  padding:2px;
  margin-left:10px;
@@ -112,29 +41,29 @@ body {
 }
 .header h1 {
   position: relative;
-  top: 50px;
-  left: 10px;
-  text-shadow:1px 1px white;
+  left: 20px;
+  top: 45px;
+  text-shadow:1px 1px black;
   visibilty:visible;
-  color:white;
-  font-family:georgia ;
-  font-size:40px;
 }
-/* Add padding to containers */
+/* Add styles to the form container */
 .container {
-  margin-left:800px;
-  margin-right:80px;
-  padding: 12px;
+  margin-top:100px;
+  margin-right:500px;
+  position: absolute;
+  right: 0;
+  max-width: 400px;
+  height:400px;
+  padding: 16px;
   background-color: white;
-  
+  border-radius:25px;
 }
 
 /* Full-width input fields */
 input[type=text], input[type=password] {
   width: 100%;
-  padding: 10px;
+  padding: 15px;
   margin: 5px 0 22px 0;
-  display: inline-block;
   border: none;
   background: #f1f1f1;
 }
@@ -144,16 +73,11 @@ input[type=text]:focus, input[type=password]:focus {
   outline: none;
 }
 
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
 /* Set a style for the submit button */
-.registerbtn {
+.btn {
   background-color: #4CAF50;
   color: white;
   padding: 16px 20px;
-  margin: 8px 0;
   border: none;
   cursor: pointer;
   width: 100%;
@@ -161,22 +85,8 @@ hr {
   border-radius:20px;
 }
 
-.registerbtn:hover {
+.btn:hover {
   opacity: 1;
-}
-
-/* Add a blue text color to links */
-a {
-  color: dodgerblue;
-}
-
-/* Set a grey background color and center the text of the "sign in" section */
-.signin {
-  background-color: #f1f1f1;
-  text-align: center;
-  border-radius:10px;
-  margin-top:15px;
-  height:75px;
 }
 </style>
 </head>
@@ -184,51 +94,20 @@ a {
 <div class="bg-img">
 <div class="header">
 <img src="logo.jpg" alt="logo" />
-<h1><b>ACM-CSS</b></h1>
+<h1>ACM-CSS</h1>
 </div>
-<form name="signup" action="/signup" onsubmit="return validation()" method="post">
-  <div class="container" style="border-radius:20px">
-    <h1>Sign Up</h1>
-    <hr>
-    <label for="name"><b>Name</b></label>
-    <input type="text" placeholder="Enter Name" name="name" required>
+  <form action="/thank2" class="container">
+    <h1>Login</h1>
 
-	<label for="Username" ><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="username" required >
-	
-	<!--<script>
-	var username = document.getElementsByName("username")[0].value;
-	if(username.value == "")
-	{
-	</script>
-	<p>Username can not be empty</p>
-	<script>
-	}
-	</script>-->
-	
-	<label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+    <label for="username"><b>Username</b></label>
+    <input type="text" placeholder="Username" name="Username" required>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required>
+    <input type="password" placeholder="Password" name="Password" required>
 
-    <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="cpassword" required>
-	
-    <label for="mob"><b>Mobile Number</b></label>
-    <input type="text" placeholder="Enter phone number" name="mobilno" required>
-	
-	<hr>
-    
-	<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-
-    <button type="submit" class="registerbtn">Register</button>
-  </div>
-  
-  <div class="container signin">
-    <p>Already have an account? <a href="signin.html">Sign in</a>.</p>
-  </div>
-</form>
+    <button type="submit" class="btn">Login</button>
+  </form>
+</div>
 </div>
 </body>
 </html>
