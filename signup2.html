@@ -41,7 +41,7 @@ body {
   left: 10px;
   text-shadow:1px 1px white;
   visibilty:visible;
-  color:white;
+  color:black;
   font-family:georgia ;
   font-size:40px;
 }
@@ -55,7 +55,7 @@ body {
 }
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=email], input[type=tel]  {
   width: 100%;
   padding: 10px;
   margin: 5px 0 22px 0;
@@ -64,10 +64,11 @@ input[type=text], input[type=password] {
   background: #f1f1f1;
 }
 
-input[type=text]:focus, input[type=password]:focus {
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=tel]:focus {
   background-color: #ddd;
   outline: none;
 }
+
 
 hr {
   border: 1px solid #f1f1f1;
@@ -122,7 +123,7 @@ a {
     <input type="text" placeholder="Enter Username" name="username" required>
 	
 	<label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+    <input type="email" placeholder="Enter Email" name="email" required>
 
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="password" required>
@@ -131,7 +132,7 @@ a {
     <input type="password" placeholder="Repeat Password" name="cpassword" required>
 	
     <label for="mob"><b>Mobile Number</b></label>
-    <input type="text" placeholder="Enter phone number" name="mobilno" required>
+    <input type="tel" placeholder="Enter phone number" name="mobilno" required>
 	
 	<hr>
     <script>
