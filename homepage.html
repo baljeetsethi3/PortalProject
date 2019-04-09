@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+body, html {
+  
+  font-family: Arial, Helvetica, sans-serif;
+  margin:0px 0px 0px 0px;
+  padding:0px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-img {
+  margin-left:0px;
+  margin-top:0px;
+  /* The image used */
+  background-image: url("signin1.jpg");
+  height:840px;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative
+  z-index:-1;
+  -webkit-filter: blur(10px); /* Safari 6.0 - 9.0 */
+  filter: blur(0px);
+  opacity:0.8; 
+}
+
+.header img{
+ margin-top:1px;
+ float: left;
+ width: 100px;
+ height:100px;
+ background: #555;
+ padding:2px;
+ margin-left:10px;
+ border-radius:50px;
+ 
+}
+.header h1 {
+  position: relative;
+  left: 20px;
+  top: 25px;
+  text-shadow:1px 1px black;
+  visibilty:visible;
+}
+
+.logout {
+margin-top:-100px;
+margin-right:20px;
+float:right;
+}
+
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 420px;
+  width: 300px;
+  position: absolute;
+  z-index: 1;
+  margin-top: 65px;
+  margin-left: 10px;
+  background-color: black;
+  overflow-x: hidden;
+  padding-top: 75px;
+  line-height:2;
+  border-radius:50px;
+}
+
+/* Style the sidenav links and the dropdown button */
+ .sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  outline:none;
+  border-height:5px;
+}
+
+/* On mouse-over */
+ .sidenav a:hover  {
+  color: #f1f1f1;
+}
+
+.icon-bar {
+  position: fixed;
+  top: 50%;
+  right:0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.icon-bar a {
+  display: block;
+  text-align: center;
+  padding: 16px;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 20px;
+}
+
+.icon-bar a:hover {
+  background-color: #000;
+}
+
+.facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.instagram {
+  background: #E1306C;
+  color: white;
+}
+
+.content {
+  margin-left: 75px;
+  font-size: 30px;
+}
+
+/* Main content */
+.main {
+  margin-top:50px;
+  margin-left:400px;
+  marginn-right:60px;
+  font-size:20px;
+}
+
+/* Main content */
+ .main h2{
+  margin-top:70px;
+  margin-left: 300px; /* Same as the width of the sidenav */
+  font-size: 40px; /* Increased text to enable scrolling */
+  font-style:georgia;
+  text-shadow:2px 2px black;
+  padding: 0px 10px;
+}
+
+ .main p{
+line-space:1;
+font-size:16px;
+font-style:georgia;
+margin-left:100px;
+margin-right:60px;
+}
+
+</style>
+</head>
+
+<body>
+<div class="bg-img">
+
+<div class="header">
+<img src="logo.jpg" alt="logo" />
+<h1>ACM-CSS</h1>
+<p id="email" style="text-align:right;margin-right:20px;margin-top:13px;font-size:25px;font-style:italic"><b>csspecsociety@gmail.com</b></p>
+</div>
+
+<div class="logout">
+<i class="fa fa-sign-out" style="font-size:30px"><a href="aboutus.html" style="color:black">Logout</a></i>
+</div>
+
+<div class="sidenav">
+    <a href="homepage.html" style="border-style:solid;border-width:1px;border-height:10px;border-radius:50px;text-align:center">Home</a>
+    <a href="#services" style="border-style:solid;border-width:1px;border-height:10px;border-radius:50px;text-align:center">Announcement</a>
+    <a href="#clients" style="border-style:solid;border-width:1px;border-height:10px;border-radius:50px;text-align:center">Workshop Material</a>
+    <a href="aboutus.html" style="border-style:solid;border-width:1px;border-height:8px;border-radius:50px;text-align:center">About Us</a>
+    <a href="#contact" style="border-style:solid;border-width:1px;border-height:8px;border-radius:50px;text-align:center">Events</a>
+</div>
+
+<div class="icon-bar">
+  <a href="https://www.facebook.com/pg/PECSITT/posts/" class="facebook"><i class="fa fa-facebook"></i></a> 
+  <a href="https://twitter.com/acm_css_pec" class="twitter"><i class="fa fa-twitter"></i></a>  
+  <a href="https://www.linkedin.com/in/acm-student-chapter-css-punjab-engineering-college-149a88179/" class="linkedin"><i class="fa fa-linkedin"></i></a>
+  <a href="#" class="instagram"><i class="fa fa-instagram"></i></a> 
+</div>
+
+<div class="main">
+  <h2><b>ABOUT ACM-CSS</b></h2>
+  <p><b> ACM-CSS is an officially recognised technical society of a college. It is headed by Akhil Singla,Btech,4th Year. We are </b></p>
+  <p><b> We are a student-run organization at PEC University of Technology aimed at development of Computer Science on campus </b><p>
+  <p><b> through participating in competitions and working on projects. Before it is recognised as an official society, it  </b></p>
+  <p><b> struggled a lot to find space among technical socities.This society aims at fostering  the future of students by </b></p>
+  <p><b> providing them real case scenarios.ACM-CSS Executive Body is the backbone of the society.They have onus like conducting</b></p>
+  <p><b> day-to-day workshops,holding code battles,organising techfest,collaborating with colleges. The society has gained </b></p>
+  <p><b> respectable status by achieving many laurels for the college.</b></p>
+  <p style="line-height:1;font-size:25px"><b><u>Executive Body Members</u></b></p>
+  <p style="font-size:15px"><b>For full information about Executive Body Members, please visit the page</b> <a href="aboutus.html">About Us</a></p>
+</div>
+
+</div> 
+</body>
+</html>

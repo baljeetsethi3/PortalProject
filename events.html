@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+body, html {
+  
+  font-family: Arial, Helvetica, sans-serif;
+  margin:0px 0px 0px 0px;
+  padding:0px;
+}
+
+* {
+  box-sizing: border-box;
+  border-radius:25px;
+}
+
+.bg-img {
+  margin-left:0px;
+  margin-top:0px;
+  margin-right:2px;
+  /* The image used */
+  background-image: url("ann1.jpeg");
+  height:1300px;
+  width:1510px;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative
+  z-index:-1;
+  -webkit-filter: blur(10px); /* Safari 6.0 - 9.0 */
+  filter: blur(0px);
+  opacity:0.8; 
+}
+
+.header img{
+ margin-top:1px;
+ float: left;
+ width: 100px;
+ height:100px;
+ background: #555;
+ padding:2px;
+ margin-left:10px;
+ border-radius:50px;
+
+}
+.header h1 {
+  position: relative;
+  left: 20px;
+  top: 25px;
+  text-shadow:1px 1px black;
+  visibilty:visible;
+}
+
+.logout {
+margin-top:-100px;
+margin-right:20px;
+float:right;
+}
+
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 420px;
+  width: 300px;
+  position: absolute;
+  z-index: 1;
+  margin-top: 100px;
+  margin-left: 40px;
+  background-color: black;
+  overflow-x: hidden;
+  padding-top: 75px;
+  line-height:2;
+  border-radius:50px;
+}
+
+
+
+/* Style the sidenav links and the dropdown button */
+ .sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  outline:none;
+  border-height:5px;
+}
+
+/* On mouse-over */
+ .sidenav a:hover  {
+  color: #f1f1f1;
+}
+
+</style>
+</head>
+
+<body>
+<div class="bg-img">
+
+<div class="header">
+<img src="logo.jpg" alt="logo" />
+<h1>ACM-CSS</h1>
+<p id="email" style="text-align:right;margin-right:20px;margin-top:15px;font-size:25px;font-style:italic;"><b>csspecsociety@gmail.com</b></p>
+</div>
+<div class="logout">
+<i class="fa fa-sign-out" style="font-size:30px"><a href="aboutus.html" style="color:black">Logout</a></i>
+</div>
