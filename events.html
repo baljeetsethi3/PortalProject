@@ -22,18 +22,13 @@ body, html {
   margin-top:0px;
   margin-right:2px;
   /* The image used */
-  background-image: url("ann1.jpeg");
+  background-image: url("ada.jpg");
   height:1300px;
-  width:1510px;
   /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative
-  z-index:-1;
-  -webkit-filter: blur(10px); /* Safari 6.0 - 9.0 */
-  filter: blur(0px);
-  opacity:0.8; 
+  background-attachment:fixed;
 }
 
 .header img{
@@ -99,6 +94,51 @@ float:right;
   color: #f1f1f1;
 }
 
+.events-write p {
+margin-left:550px;
+font-size:45px;
+font-style:italic;
+font-weight:1200;
+color:white;
+}
+
+.list-of-events {
+margin-left:600px;
+padding:10px;
+}
+
+.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index:1;
+}
+
+.dropdown-content img {
+ float: left;
+ width: 480px;
+ height:570px;
+ padding:20px;
+}
+
+.dropdown-content p {
+margin-left:20px;
+font-size:14.7px;
+line-height:1.5;
+font-style:italic;
+}
+
+.dropdown:hover  .dropdown-content{
+  display: block;
+  padding:0px;
+}
+
 </style>
 </head>
 
@@ -110,6 +150,123 @@ float:right;
 <h1>ACM-CSS</h1>
 <p id="email" style="text-align:right;margin-right:20px;margin-top:15px;font-size:25px;font-style:italic;"><b>csspecsociety@gmail.com</b></p>
 </div>
+
 <div class="logout">
 <i class="fa fa-sign-out" style="font-size:30px"><a href="aboutus.html" style="color:black">Logout</a></i>
 </div>
+
+<div class="sidenav">
+    <a href="homepage.html" style="border-style:solid;border-width:1px;border-height:10px;border-radius:50px;text-align:center">Home</a>
+    <a href="#services" style="border-style:solid;border-width:1px;border-height:10px;border-radius:50px;text-align:center">Announcement</a>
+    <a href="#clients" style="border-style:solid;border-width:1px;border-height:10px;border-radius:50px;text-align:center">Workshop Material</a>
+    <a href="aboutus.html" style="border-style:solid;border-width:1px;border-height:8px;border-radius:50px;text-align:center">About Us</a>
+    <a href="#contact" style="border-style:solid;border-width:1px;border-height:8px;border-radius:50px;text-align:center">Events</a>
+</div> 
+
+<div class="events-write">
+<p><b><u>Past Events And Workshops</b></u></p>
+</div>
+
+<div class="list-of-events">
+<div class="dropdown">
+<ul style="list-style-type:disc;line-height:25px;margin-left:20px">
+  <p style="font-size:25px;margin-left:-120px; font-style:italic;"><b><span>1.CODOPHILIA EVENT </span>
+  
+  <div class="dropdown-content">
+  <img src="codophilia.jpg" >
+  <p>ACM-CSS is proud to announce the results of its annual event CODOPHILIA. We were really delighted to see such a positive response in
+  all three events.</br>Heartiest Congratulations to all winners.</b></br></br><b><u>MATH-o-MANIA</u>-Where teams need to tough maths and
+  real-life problems through coding.</br><u> First Position:Parikh,Chaitanya</u></br><u>Second Position:Piyush,Rajat</u></br><u>Third 
+  Position:Divyanshi,Neha</u></br></br><u><b>QUIZ-IT</b></u>- A 2 round technical quiz in which participants had to answers general and technical quiz.</br>
+  <u>First Position:Parikh,Shayan</u></br><u>Second Position:Vikram,Puneet</u></br><u>Third Position:Balpreet,Prashant</u></br></br><u>CODE-FACE-OFF</u>
+  - Where two participants were given a question to solve,the ones who solves faster wins the event. it consisted of 24 best performers selected
+  via prelims.</br><u>First Postion:Tarun Khullar</u></br><u>Second Position:Sumukh Bhardwaj</u></br><u>Third Position:Naman Mittal and Rajat</u></p>
+  </div>
+  </b></p>
+  </div> 
+  
+  </br>
+  
+  <div class="dropdown">
+<ul style="list-style-type:disc;line-height:25px;margin-left:20px">
+  <p style="font-size:25px;margin-left:-120px; font-style:italic;"><b><span>2.Ethical Hacking Workshop.</span>
+  
+  <div class="dropdown-content">
+  <img src="ethical.jpg" width="50px" height="50px">
+  <p style="margin-top:80px">Everyone has heard of Ethical hacking and some might even want to try it, but no one knows where to begin. 
+
+So, ACM-CSS presents a series of workshops on Ethical Hacking to give you a Kickstart in Penetration testing.
+
+This workshop will not only make you familiar with the tools, but also hands-on experience with their operation.
+There are great career opportunities in the Cyber security world, so this workshop would give you the required basic steps to start your career in cyber security world. 
+
+So grab your laptops, see you at the workshop. 
+</br>
+Date - 12 March
+</br>
+Time - 05 : 15 PM
+</br> 
+Venue - L21</br></p>
+  </div>
+  </b></p>
+  </div> 
+  
+ </br>
+  <div class="dropdown">
+<ul style="list-style-type:disc;line-height:25px;margin-left:20px">
+  <p style="font-size:25px;margin-left:-120px; font-style:italic;"><b><span>3.CoDecode.</span>
+  
+  <div class="dropdown-content">
+  <img src="codecode.jpg" width="50px" height="50px">
+  <p style="margin-top:80px">Looking for an opportunity to participate in the biggest techfest of Asia - IITB techfest ??
+</br>
+Here's the first step - CoDecode - The ultimate Coding ShowDown
+</br>
+Embrace yourself for one of the best programing event at PECFEST 2018 - a grand technical and cultural festival at Punjab engineering college, as CSSPEC is ready with its first ever coding event, 
+CoDecode - The ultimate Coding ShowDown
+</br>
+So GEAR UP FOR THE PRELIMS! 
+</br>
+Prelims - A 3 hour online event, consisting of coding questions to put your gray cells into a tizzy!
+</br>
+Date : 13th of October, 2018
+</p>
+  </div>
+  </b></p>
+  </div>
+  
+  
+  </br>
+   <div class="dropdown">
+<ul style="list-style-type:disc;line-height:25px;margin-left:20px">
+  <p style="font-size:25px;margin-left:-120px; font-style:italic;"><b><span>4.Code Relay.</span>
+  
+  <div class="dropdown-content">
+  <img src="coderelay.jpg" width="50px" height="50px">
+  <p style="margin-top:80px">Hello Programmers!!
+</br>
+CSS - The Computer Science Society Of PEC presents you with a fun event Code Relay at PECFEST -2018 and an amazing and a quick way to win amazing prizes and test your skills.
+</br>
+Come and participate in a team of 2 !!
+</br>
+Easy coding questions to be solved in 16 minutes timeframe where you will be switching between the partners after every 4 minutes !!
+</br>
+Date -28 October 2018
+</br>
+Time slots- 10am -12pm and 2pm-4 pm
+</br>
+Don't miss out !!
+</br></p>
+  </div>
+  </b></p>
+  </div>
+  
+  
+  
+</ul>
+ 
+</div>
+
+</div>
+</body>
+</html>
