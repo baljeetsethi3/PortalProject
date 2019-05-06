@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body, html {
+  
+  font-family: Arial, Helvetica, sans-serif;
+  margin:0px 0px 0px 0px;
+  padding:0px;
+}
+
+* {
+  box-sizing: border-box;
+  border-radius:10px;
+}
+
+.bg-img {
+  margin-left:0px;
+  margin-top:0px;
+  /* The image used */
+  background-image: url("aboutus1.jpg");
+  height:1200px;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+ 
+  background-attachment:fixed;
+   
+}
+
+.header img{
+ margin-top:1px;
+ float: left;
+ width: 100px;
+ height:100px;
+ background: #555;
+ padding:2px;
+ margin-left:10px;
+ border-radius:50px;
+
+}
+.header h1 {
+  position: relative;
+  left: 20px;
+  top: 25px;
+  text-shadow:1px 1px black;
+  visibilty:visible;
+}
+
+.logout {
+margin-top:-100px;
+margin-right:20px;
+float:right;
+}
+
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 420px;
+  width: 300px;
+  position: absolute;
+  z-index: 1;
+  margin-top: 45px;
+  margin-left: 40px;
+  background-color: black;
+  overflow-x: hidden;
+  padding-top: 75px;
+  line-height:2;
+  border-radius:50px;
+}
+
+/* Style the sidenav links and the dropdown button */
+ .sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  outline:none;
+  border-height:5px;
+}
+
+/* On mouse-over */
+ .sidenav a:hover  {
+  color: #f1f1f1;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  margin-left:600px;
+  width: 500px;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom:10px;
+  margin-top:5px;
+}
+
+#myUL {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width:1130px;
+  border-radius:20px;
+  margin-top:10px;
+}
+
+#myUL li a {
+  border: 1px solid #ddd;
+  margin-bottom:3px;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 5px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block;
+  margin-left:600px;
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #f6f6f6;
+}
+
+.members a {
+font-style:georgia;
+font-size:10px;
+font-style:italic;
+}
+</style>
+</head>
+<body>
+
+<div class="bg-img">
+
+<div class="header">
+<img src="logo.jpg" alt="logo" />
+<h1>ACM-CSS</h1>
+<p id="email" style="text-align:right;margin-right:20px;margin-top:13px;font-size:20px;font-style:italic"><b>csspecsociety@gmail.com</b></p>
+</div>
+
+<div class="logout">
+<i class="fa fa-sign-out" style="font-size:30px"><a href="javascript:openpage4()" style="color:black">Logout</a></i>
+</div>
+
+<script language="javascript" type="text/javascript">
+var user1="<%= usern %>";
+var str1="/resource?user1="+user1;
+var str2="/aboutus?user1="+user1;
+var str3="/announcement?user1="+user1;
+var str4="/logout?user1="+user1;
+var str5="/events?user1="+user1;
+var str6="/home2?user1="+user1;
+openpage1=function()
+{
+location.href=str1;
+}
+openpage2=function()
+{
+location.href=str2;
+}
+openpage3=function()
+{
+location.href=str3;
+}
+openpage4=function()
+{
+location.href=str4;
+}
+openpage5=function()
+{
+location.href=str5;
+}
+openpage6=function()
+{
+location.href=str6;
+}
+</script>
+
+<div class="sidenav">
+    <a href="javascript:openpage6()" style="border-style:solid;border-width:1px;border-height:10px;border-radius:50px;text-align:center">Home</a>
+    <a href="javascript:openpage3()" style="border-style:solid;border-width:1px;border-height:10px;border-radius:50px;text-align:center">Announcement</a>
+    <a href="javascript:openpage1()" style="border-style:solid;border-width:1px;border-height:10px;border-radius:50px;text-align:center">Workshop Material</a>
+    <a href="javascript:openpage5()" style="border-style:solid;border-width:1px;border-height:8px;border-radius:50px;text-align:center">Events</a>
+	    <a href="javascript:openpage2()" style="border-style:solid;border-width:1px;border-height:8px;border-radius:50px;text-align:center">About Us</a>
+	</div>
+
+<div class="members">
+<h2 style="text-align:center;margin-left:200px;font-size:35px"><b><u>EXECUTIVE BODY MEMBERS</u></b></h2>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+
+<ul id="myUL">
+<li><a><b>Akhil Singla(Head of ACM-CSS) - 98553 39642</b></a></li>
+<li><a><b>Siddharth Dangwal(Vice-Head of ACM-CSS) - 84332 45443</b></a></li>
+<li><a>Amritpreet Singh - 87290 99599</a></li>
+<li><a>Baljeet Singh - 9896844703</a></li>
+<li><a>Pranjal Kaler - 78892 31716</a></li>
+<li><a>Shubham - 94642 79002</a></li>
+<li><a>Ritesh Goyal - 98880 19027</a></li>
+<li><a>Agrim Dewan - 70093 27637</a></li>
+<li><a>Harshit Sharma - 83606 55458</a></li>
+<li><a>Naman Mittal - 98774 52613</a></li>
+<li><a>Pradhyuman Goyal - 94640 57601</a></li>
+<li><a>Pranjali - 97799 44247</a></li>
+<li><a>Rahul sharma - 88377 01828</a></li>
+<li><a>Shubham Bharti - 79865 10416</a></li>
+<li><a>Vikram Mondal - 83601 88324</a></li>
+<li><a>Harinder Singh - 73473 16295</a></li>
+<li><a>Kartik Goel - 76786 68577</a></li>
+<li><a>Sonali - 76963 58340</a></li>
+<li><a>Megha Babbar - 81460 80671</a></li>
+<li><a>Gurpreet Singh - 86999 25659</a></li>
+<li><a>Bhuvan Rana - 87278 05803</a></li>
+<li><a>Aakankasha Sharma - 90562 95528</a></li>
+<li><a>Arihant Chawla - 95015 80708</a></li>
+<li><a>Sanyam Dhawan - 95306 10167</a></li>
+<li><a>Animesh Garg - 99141 49508</a></li>
+
+</div>
+
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}.032
+</script>
+20.
+</div>
+</body>
+</html>

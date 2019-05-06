@@ -3,48 +3,53 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
+
 body, html {
   
   font-family: Arial, Helvetica, sans-serif;
   margin:0px 0px 0px 0px;
   padding:0px;
 }
+
 * {
   box-sizing: border-box;
 }
+
 .bg-img {
-  margin-left:0px;
+   margin-left:0px;
   margin-top:0px;
   /* The image used */
-  background-image: url("signin1.jpg");
-  height:1000px;
+  background-image:url("9.jpg");
+  min-height:500px;
+  width:100%;
   /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
+ background-attachment:fixed;
 }
+
 .header img{
- margin-top:1px;
+ top:5px;
  float: left;
  width: 100px;
  height:100px;
  background: #555;
  padding:2px;
  margin-left:10px;
+ margin-top:10px;
  border-radius:50px;
  
 }
 .header h1 {
   position: relative;
   left: 20px;
-  top: 15px;
+  top: 35px;
   text-shadow:1px 1px black;
   visibilty:visible;
+	color:black;
 }
-
 
 .logout {
 margin-top:-90px;
@@ -52,21 +57,21 @@ margin-right:20px;
 float:right;
 }
 
-
 /* Fixed sidenav, full height */
 .sidenav {
-  height: 380px;
+  height:430px;
   width: 300px;
   position: absolute;
   z-index: 1;
-  margin-top: 65px;
+  margin-top: 40px;
   margin-left: 10px;
   background-color: black;
   overflow-x: hidden;
-  padding-top:75px;
+  padding-top: 75px;
   line-height:2;
   border-radius:50px;
 }
+
 /* Style the sidenav links and the dropdown button */
 .sidenav a {
   padding: 6px 8px 6px 16px;
@@ -80,89 +85,57 @@ float:right;
   text-align: center;
   cursor: pointer;
 }
+
 /* On mouse-over */
 .sidenav a:hover, .dropdown-btn:hover {
   color: #f1f1f1;
 }
 
-.icon-bar {
-  position: fixed;
-  top: 50%;
-  right:0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+.big{
+	margin-left:15px;
+	margin-right:15px;
+	padding-top:120px;
+	padding-left:15px;
+	position:relative;
+}
+.slideshow .nature{
+margin-left:450px;
+margin-top:60px;
+border-radius:35px;
+border:1px solid black;
+width:700px;
+height:420px;
 }
 
-.icon-bar a {
-  display: block;
-  text-align: center;
-  padding: 16px;
-  transition: all 0.3s ease;
-  color: white;
-  font-size: 20px;
+.small{
+	margin-left:25px;
+	margin-right:25px;
+	height:55px;
+	border-radius:25px;
+	padding-left:20px;
+	padding-right:10px;
+	border:1px solid black;
+	/*background-color:lavender;*/
+	}
+
+.small p{
+color:white
+font-style:italic;
+margin-top:10px;
+font-size:25px;
 }
 
-.icon-bar a:hover {
-  background-color: #000;
+#link{
+float:right;
+color:blue;
 }
-
-.facebook {
-  background: #3B5998;
-  color: white;
-}
-
-.twitter {
-  background: #55ACEE;
-  color: white;
-}
-
-.linkedin {
-  background: #007bb5;
-  color: white;
-}
-
-.instagram {
-  background: #E1306C;
-  color: white;
-}
-
-.content {
-  margin-left: 75px;
-  font-size: 30px;
-}
-
-/* Main content */
-.main {
-  margin-top:50px;
-  margin-left:400px;
-  marginn-right:60px;
-  font-size:20px;
-}
-
-/* Main content */
- .main h2{
-  margin-top:70px;
-  margin-left: 250px; /* Same as the width of the sidenav */
-  font-size: 40px; /* Increased text to enable scrolling */
-  font-style:georgia;
-  text-shadow:2px 2px black;
-  padding: 0px 10px;
-}
-
- .main p{
-line-space:1;
-font-size:16px;
-font-style:georgia;
-margin-left:100px;
-margin-right:60px;
-}
-
 
 </style>
 </head>
+
 <body>
 <div class="bg-img">
+
 <div class="header">
 <img src="logo.jpg" alt="logo" />
 <h1>ACM-CSS</h1>
@@ -173,7 +146,6 @@ margin-right:60px;
 <i class="fa fa-sign-out" style="font-size:30px"><a href="javascript:openpage4()" style="color:black">Logout</a></i>
 </div>
 
-
 <script language="javascript" type="text/javascript">
 var user1="<%= usern %>";
 var str1="/resource?user1="+user1;
@@ -181,6 +153,7 @@ var str2="/aboutus?user1="+user1;
 var str3="/announcement?user1="+user1;
 var str4="/logout?user1="+user1;
 var str5="/events?user1="+user1;
+var str6="/home2?user1="+user1;
 openpage1=function()
 {
 location.href=str1;
@@ -201,16 +174,19 @@ openpage5=function()
 {
 location.href=str5;
 }
-
+openpage6=function()
+{
+location.href=str6;
+}
 </script>
 
-
 <div class="sidenav">
- 
+  <a href="javascript:openpage6()" style="border-style:solid;border-width:1px;border-height:10px;border-radius:50px;text-align:center">Home</a>
   <a href="javascript:openpage3()" style="border-style:solid;border-width:1px;border-height:10px;border-radius:50px;text-align:center">Announcement</a>
   <a href="javascript:openpage1()" style="border-style:solid;border-width:1px;border-height:10px;border-radius:50px;text-align:center">Workshop Material</a>
   <a href="javascript:openpage5()" style="border-style:solid;border-width:1px;border-height:8px;border-radius:50px;text-align:center">Events</a>
   <a href="javascript:openpage2()" style="border-style:solid;border-width:1px;border-height:8px;border-radius:50px;text-align:center">About Us</a>
+
   <!--<button class="dropdown-btn">Dropdown 
     <i class="fa fa-caret-down"></i>
   </button>
@@ -221,27 +197,38 @@ location.href=str5;
   </div>-->
 </div>
 
-<div class="icon-bar">
-  <a href="https://www.facebook.com/pg/PECSITT/posts/" class="facebook"><i class="fa fa-facebook"></i></a> 
-  <a href="https://twitter.com/acm_css_pec" class="twitter"><i class="fa fa-twitter"></i></a>  
-  <a href="https://www.linkedin.com/in/acm-student-chapter-css-punjab-engineering-college-149a88179/" class="linkedin"><i class="fa fa-linkedin"></i></a>
-  <a href="#" class="instagram"><i class="fa fa-instagram"></i></a> 
+<div class="slideshow">
+<script src="w3.js"></script>
+<img class="nature" src="1.jpg" >
+<img class="nature" src="2.jpg" >
+<img class="nature" src="3.jpg">
+<img class="nature" src="4.jpg" >
+<script>
+w3.slideshow(".nature", 2000);
+</script>
 </div>
 
-<div class="main">
-  <h2><b>ABOUT ACM-CSS</b></h2>
-  <p><b> ACM-CSS is an officially recognised technical society of a college. It is headed by Akhil</p> 
-  <p><b> Singla,Btech,4th Year. We are a student-run organization at PEC University of Technology aimed</b></p>
-<p><b>  at development of Computer Science on campus through participating in competitions and working </b><p>
-  <p><b>on projects. Before it is recognised as an official society, it struggled a lot to find space </b></p>
-  <p><b>among technical socities. This society aims at fostering  the future of students by providing</b></p>
-  <p><b> them real case scenarios.ACM-CSS Executive Body is the backbone of the society.They have </b></p>
-  <p><b>onus like conducting day-to-day workshops,holding code battles,organising techfest, </b></p>
-  <p><b>collaborating with colleges. The society has gained respectable status by achieving many </b></p>
-  <p><b>laurels for the college.</b></p>
-  
-</div>
 
+
+<div class="big" id="my">
+<script>
+var files="<%= files %>";
+//alert(files);
+files=files.split(',');
+files.sort(function(a, b) {
+    a = new Date(a.dateModified);
+    b = new Date(b.dateModified);
+    return a>b ? -1 : a<b ? 1 : 0;
+});
+for(i=0;i<files.length;i++)
+{
+var x=document.getElementById("my").innerHTML;
+var str="'/download?file="+files[i]+"'";
+var nameoffile=files[i].split('.');
+document.getElementById("my").innerHTML=x+"<div class='small'><p>"+nameoffile[0]+" <a id='link' href="+str+">"+files[i]+"</a></p></div><br></br>";
+}
+</script>
+</div>
 
 </div>
 </body>

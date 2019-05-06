@@ -17,26 +17,80 @@ var flash = require('connect-flash');
 var say=require('say');
 var mailer=require('./mail.js');
 var randomstring = require("randomstring");
-var cookieparser=require('cookie-parser');
 var formidable = require('formidable');
 
 
-app.use(cookieparser());
+//app.use(cookieparser());
 app.engine('html', require('ejs').renderFile);
 app.use(flash());
 
 app.use(bodyParser.urlencoded({ // Middleware
     extended: true
   }));
-  app.use(bodyParser.json());
+ app.use(bodyParser.json());
 
-  
+//server connection
+var server = app.listen(8080, function () {
+  var host = server.address().address
+  var port = server.address().port
+  console.log("listening at %s Port", port)
+});
+ 
+//mysql connection
+var con = mysql.createConnection({
+	host: "localhost",
+	user: "root",
+	password: "123",
+	database: "user"
+	});
+
+	
+	con.connect(function(err){
+		if(err) 
+			return console.error(err.message);
+		console.log("connected");
+	}); 
+	
+app.use(express.static('./forms'));
+
+
+app.post('/comment',function(req,res){
+	var q=url.parse(req.url,true);
+	var query=q.query;
+	var usern=query.user1;
+	var type=req.body.type;
+	var comm=req.body.comment;
+	var check2="Select email From register where username=" +'"'+ usern+'"';
+	con.query(check2,function(err,r,f){
+	var email=r[0].email;
+	
+	var q="INSERT INTO query(Query_type,query,email) VALUES (" + '"'+ type +'"'+ ',' +'"'+ comm +'"'+ ',' +'"'+ email +'"'+")";
+		con.query(q,function(err,result)
+					{
+					console.log("Query added");
+					}
+				);
+	var mssg="Your Query has been posted"
+	var q2="select Query from query where email='"+email+"'"+";"
+		var q3="select answer from query where email='"+email+"'"+";"
+	con.query(q2,function(err,row1)
+	{
+		con.query(q3,function(err,row2)
+		{
+
+	res.render("C:/Users/dell/Desktop/EAD/project/forms/announcement2.html",{usern:usern,mssg:mssg,qu:JSON.stringify(row1),ans:JSON.stringify(row2)});
+		});
+	});
+	});
+});
+
+ 
 app.post('/passwordsend.html',function(req,res){
 		var check="Select count(*) as c from register where username = "+'"'+ req.body.username+'"'+";";
-		//console.log(req.body.username);
+
 		con.query(check,function(err,row)
 		{
-			//console.log(req.body.username);
+
 			if(row[0].c==0)
 			{
 				var name="Invalid Username !";
@@ -67,32 +121,213 @@ app.post('/passwordsend.html',function(req,res){
 });
 
 
-//mysql connection
-var con = mysql.createConnection({
-	host: "localhost",
-	user: "root",
-	password: "123",
-	database: "user"
+app.get('/resource', function(req, res){
+	var q=url.parse(req.url,true);
+	var query=q.query;
+	var usern=query.user1;
+	if(usern.includes("ebcss"))
+	{
+		var log2="Select count(*) As c From register where username=" +'"'+ usern+'"';
+	con.query(log2,function(err,r,f)
+	{
+		if(r[0].c>=1)
+		{
+	var log1="select login from register where username=" +'"'+ usern+'"';
+	con.query(log1,function(err,row,field)
+	{
+		if(row[0].login==1)
+		{
+
+  var fileindir =  fs.readdirSync('C:/Users/dell/Desktop/EAD/project/Resource/');
+
+  res.render("C:/Users/dell/Desktop/EAD/project/forms/resource2.html",{files:fileindir,usern:usern});
+		}
+		else
+		{
+			var name="Please sign in to access the webpage";
+		 res.render("C:/Users/dell/Desktop/EAD/project/forms/signin2.html", {name:name});
+		}
 	});
+		}
+		else
+		{
+			var name="To access the page please signin";
+		 res.render("C:/Users/dell/Desktop/EAD/project/forms/signin2.html", {name:name});
+		}
+	});
+	}	
+		else
+		{
+	var log2="Select count(*) As c From register where username=" +'"'+ usern+'"';
+	con.query(log2,function(err,r,f)
+	{
+		if(r[0].c>=1)
+		{
+	var log1="select login from register where username=" +'"'+ usern+'"';
+	con.query(log1,function(err,row,field)
+	{
+		if(row[0].login==1)
+		{
 
-	
-	con.connect(function(err){
-		if(err) 
-			return console.error(err.message);
-		console.log("connected");
-	}); 
-
-
-	
-app.use(express.static('./forms'));
-
-
-app.get('/download', function(req, res){
-	
-  var file =  'C:/Users/dell/Desktop/EAD/project/Resource/';
-  res.write(file); // Set disposition and send it.
+  var fileindir =  fs.readdirSync('C:/Users/dell/Desktop/EAD/project/Resource/');
+ 
+  res.render("C:/Users/dell/Desktop/EAD/project/forms/resource.html",{files:fileindir,usern:usern});
+		}
+		else
+		{
+			var name="Please sign in to access the webpage";
+		 res.render("C:/Users/dell/Desktop/EAD/project/forms/signin2.html", {name:name});
+		}
+	});
+		}
+		else
+		{
+			var name="To access the page please signin";
+		 res.render("C:/Users/dell/Desktop/EAD/project/forms/signin2.html", {name:name});
+		}
+	});
+	}
+ 
 });
 
+app.get('/aboutus', function(req, res){
+	var q=url.parse(req.url,true);
+	var query=q.query;
+	var usern=query.user1;
+	var log2="Select count(*) As c From register where username=" +'"'+ usern+'"';
+	con.query(log2,function(err,r,f)
+	{
+		if(r[0].c>=1)
+		{
+	var log1="select login from register where username=" +'"'+ usern+'"';
+	con.query(log1,function(err,row,field)
+	{
+		if(row[0].login==1)
+		{
+			res.render("C:/Users/dell/Desktop/EAD/project/forms/aboutus.html",{usern:usern});
+		}
+		else
+		{
+			var name="Please sign in to access the webpage";
+		 res.render("C:/Users/dell/Desktop/EAD/project/forms/signin2.html", {name:name});
+		}
+	});
+		}
+		else
+		{
+			var name="To access the page please signin";
+		 res.render("C:/Users/dell/Desktop/EAD/project/forms/signin2.html", {name:name});
+		}
+	});
+ 
+});
+
+app.get('/announcement', function(req, res){
+	var q=url.parse(req.url,true);
+	var query=q.query;
+	var usern=query.user1;
+	var log2="Select count(*) As c From register where username=" +'"'+ usern+'"';
+	con.query(log2,function(err,r,f)
+	{
+		if(r[0].c>=1)
+		{
+	var log1="select login from register where username=" +'"'+ usern+'"';
+	con.query(log1,function(err,row,field)
+	{
+		if(row[0].login==1)
+		{
+			res.render("C:/Users/dell/Desktop/EAD/project/forms/announcement.html",{usern:usern});
+		}
+		else
+		{
+			var name="Please sign in to access the webpage";
+		 res.render("C:/Users/dell/Desktop/EAD/project/forms/signin2.html", {name:name});
+		}
+	});
+		}
+		else
+		{
+			var name="To access the page please signin";
+		 res.render("C:/Users/dell/Desktop/EAD/project/forms/signin2.html", {name:name});
+		}
+	});
+ 
+});
+
+
+app.get('/events', function(req, res){
+	var q=url.parse(req.url,true);
+	var query=q.query;
+	var usern=query.user1;
+	var log2="Select count(*) As c From register where username=" +'"'+ usern+'"';
+	con.query(log2,function(err,r,f)
+	{
+		if(r[0].c>=1)
+		{
+	var log1="select login from register where username=" +'"'+ usern+'"';
+	con.query(log1,function(err,row,field)
+	{
+		if(row[0].login==1)
+		{
+			res.render("C:/Users/dell/Desktop/EAD/project/forms/events.html",{usern:usern});
+		}
+		else
+		{
+			var name="Please sign in to access the webpage";
+		 res.render("C:/Users/dell/Desktop/EAD/project/forms/signin2.html", {name:name});
+		}
+	});
+		}
+		else
+		{
+			var name="To access the page please signin";
+		 res.render("C:/Users/dell/Desktop/EAD/project/forms/signin2.html", {name:name});
+		}
+	});
+ 
+});
+
+
+app.get('/home2', function(req, res){
+	var q=url.parse(req.url,true);
+	var query=q.query;
+	var usern=query.user1;
+	var log2="Select count(*) As c From register where username=" +'"'+ usern+'"';
+	con.query(log2,function(err,r,f)
+	{
+		if(r[0].c>=1)
+		{
+	var log1="select login from register where username=" +'"'+ usern+'"';
+	con.query(log1,function(err,row,field)
+	{
+		if(row[0].login==1)
+		{
+			res.render("C:/Users/dell/Desktop/EAD/project/forms/home2.html",{usern:usern});
+		}
+		else
+		{
+			var name="Please sign in to access the webpage";
+		 res.render("C:/Users/dell/Desktop/EAD/project/forms/signin2.html", {name:name});
+		}
+	});
+		}
+		else
+		{
+			var name="To access the page please signin";
+		 res.render("C:/Users/dell/Desktop/EAD/project/forms/signin2.html", {name:name});
+		}
+	});
+ 
+});
+
+
+
+app.get('/download',function(req,res){
+	var q=url.parse(req.url,true);
+	var query=q.query;
+	var file=query.file;
+	res.download("C:/Users/dell/Desktop/EAD/project/Resource/"+file);
+});
 
 app.post("/fileupload",function(req,res)
 {
@@ -101,21 +336,12 @@ app.post("/fileupload",function(req,res)
       var oldpath = files.filetoupload.path;
       var newpath = 'C:/Users/dell/Desktop/EAD/project/Resource/' + files.filetoupload.name;
       fs.rename(oldpath, newpath, function (err) {
-        if (err) throw err;
-        res.write('File uploaded and moved!');
-        res.end();
+		   var fileindir =  fs.readdirSync('C:/Users/dell/Desktop/EAD/project/Resource/');
+				res.render("C:/Users/dell/Desktop/EAD/project/forms/resource2.html",{files:fileindir,usern:""});
       });
  });
 });
 	
-//server connection
-var server = app.listen(8080, function () {
-  var host = server.address().address
-  var port = server.address().port
-  console.log("listening at %s Port", port)
-});
-
-//apps to handle various events 
 
 //start page
 app.get('/',function(req,res)
@@ -127,23 +353,27 @@ app.get('/',function(req,res)
 
 
 app.use('/welcome',mid.checkToken,function(req,res){
-		//value="true";
-		//var q = url.parse(req.url, true);
-		//var qdata = q.query; 
-		//var usern =qdata.username; 
-		//res.cookie(usern,value,{expire:40000+Date.now()});
-		//var ssn=req.session;
-		//ssn.user="true";
-		res.render("C:/Users/dell/Desktop/EAD/project/forms/homepage.html");
+		
+		var q = url.parse(req.url, true);
+		var qdata = q.query; 
+		var usern =qdata.username; 
+		
+		res.render("C:/Users/dell/Desktop/EAD/project/forms/homepage.html",{usern:usern});
 		say.speak('Welcome to ACM-CSS');
-		//res.write('Welcome!');
-		//res.end();
 });
 
-/*app.get('/logout',function(req,res){
-	res.clearCookie('user');
-	res.render("C:/Users/dell/Desktop/EAD/project/forms/main1.html");
-});*/
+app.get('/logout',function(req,res){
+	var q = url.parse(req.url, true);
+		var qdata = q.query; 
+		var usern =qdata.user1; 
+	var log1="update register set login=0 where username=" +'"'+ usern+'"';
+	con.query(log1,function(err)
+		{
+			if(err)
+				console.log(err);
+		});
+	res.render("C:/Users/dell/Desktop/EAD/project/forms/main1.html",{usern:usern});
+});
 
 
 //event for sign up
@@ -172,14 +402,14 @@ app.post('/signup',uenp, function (req, res){
 	}
 	else{
 		enc.hash(password,10,function(err,hash){
-	var q="INSERT INTO register(email,username,password,name,phone) VALUES (" + '"'+ email +'"'+ ',' +'"'+ username +'"'+ ',' +'"'+ hash +'"'+ ',' +'"'+ name1 +'"'+ ',' +'"'+ phone +'"'+ ")";
+	var q="INSERT INTO register(email,username,password,name,phone,login) VALUES (" + '"'+ email +'"'+ ',' +'"'+ username +'"'+ ',' +'"'+ hash +'"'+ ',' +'"'+ name1 +'"'+ ',' +'"'+ phone +'"'+ ',1'+")";
 		con.query(q,function(err,result)
 					{
 					console.log("added");
 					}
 				);
 		});
-	 var token = jwt.sign({username:uni},config.secret,{expiresIn:'100'});
+	 var token = jwt.sign({username:uni},config.secret,{expiresIn:'10'});
 	
 	res.redirect('/welcome?token='+token+'&username='+username);
 	}
@@ -217,49 +447,14 @@ app.post('/signin', uenp,function (req, res){
 		}
 		else
 		{
+			var ins="update register set login=1 where username="+'"'+username+'";';
+			con.query(ins,function(err){
 			var token = jwt.sign({username: uni},config.secret,{expiresIn:'10'});
 		res.redirect('/welcome?token='+token+'&username='+username);
+			});
 		}
 		});
 	});
 	}
 });
 });
-
-var pusher = new Pusher({
-  appId: '743803',
-  key: 'ae1ad0b049515ea28202',
-  secret: '9d9e9934d6b8166754d8',
-  cluster: 'ap2',
-  encrypted: true
-});
-
-//app.post('/resource.html',function(req,res){
-	
-	
-/*
-app.get('/commentbox',function(req,res){
-	fs.readFile('commentbox.html',function(err,data){
-		if(err)
-			throw(err);
-		res.writeHead(200, {'Content-Type': 'text/html'});
-		res.write(data);
-		res.end();
-	});
-});
-	
-app.post('/welcome', function(req, res){
-	  var q = url.parse(req.url, true);
-var qdata = q.query;  
-  var username =qdata.username; 
-  console.log(req.body);
-  console.log(username);
-
-  var newComment = {
-    Query_type: req.body.type,
-    Query: req.body.comment
-  }
-  
-  pusher.trigger('comments', 'new_comment', newComment);
-  res.json({ created: true });
-});*/

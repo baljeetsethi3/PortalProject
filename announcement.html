@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+body, html {
+  
+  font-family: Arial, Helvetica, sans-serif;
+  margin:0px 0px 0px 0px;
+  padding:0px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-img {
+  margin-left:0px;
+  margin-top:0px;
+  /* The image used */
+  background-image: url("ann1.jpeg");
+ min-height:1300px;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment:fixed;
+
+}
+
+.header img{
+ margin-top:1px;
+ float: left;
+ width: 100px;
+ height:100px;
+ background: #555;
+ padding:2px;
+ margin-left:10px;
+ border-radius:50px;
+
+}
+.header h1 {
+  position: relative;
+  left: 20px;
+  top: 25px;
+  text-shadow:1px 1px black;
+  visibilty:visible;
+}
+
+.logout {
+margin-top:-100px;
+margin-right:20px;
+float:right;
+}
+
+marquee {
+        width: 100%;
+        padding: 10px 0;
+        font-style:italic;
+      }  
+
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 420px;
+  width: 300px;
+  position: absolute;
+  z-index: 1;
+  margin-top: 10px;
+  margin-left: 40px;
+  background-color: black;
+  overflow-x: hidden;
+  padding-top: 75px;
+  line-height:2;
+  border-radius:50px;
+}
+
+/* Style the sidenav links and the dropdown button */
+ .sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  outline:none;
+  border-height:5px;
+}
+
+/* On mouse-over */
+ .sidenav a:hover  {
+  color: #f1f1f1;
+}
+
+.ann-logo {
+margin-left:600px;
+margin-top:70px;
+}
+
+.ann-write p {
+margin-left:700px;
+margin-top:-85px;
+font-size:45px;
+font-style:italic;
+font-weight:1200;
+}
+
+.material {
+font-size:30px;
+margin-left:650px;
+margin-top:120px;
+font-style:italic;
+}
+
+.comment{
+margin-left:50px;
+margin-top:200px;
+font-style:italic;
+font:georgian;
+font-size:20px;
+}
+
+#q{
+background-image:url("comment.jpg");
+background-height:200px;
+background-attachment:fixed;
+border:2px solid gray;
+border-radius:10px;
+font-style:italic;
+font-size:15px;
+height:200px;
+}
+
+#s{
+width:150px;
+height:30px;
+font-size:15px;
+font-style:italic;
+border:2px solid gray;
+border-radius:5px;
+}
+
+#sel{
+width:150px;
+height:30px;
+font-size:15px;
+font-style:italic;
+border:2px solid gray;
+border-radius:5px;
+}
+
+</style>
+</head>
+
+<body>
+<div class="bg-img">
+
+<div class="header">
+<img src="logo.jpg" alt="logo" />
+<h1>ACM-CSS</h1>
+<p id="email" style="text-align:right;margin-right:20px;margin-top:13px;font-size:20px;font-style:italic"><b>csspecsociety@gmail.com</b></p>
+</div>
+
+
+<div class="logout">
+<i class="fa fa-sign-out" style="font-size:30px"><a href="javascript:openpage4()" style="color:black">Logout</a></i>
+</div>
+
+<marquee style="font-size:18px;font-weight:bold;color:black">Codophilia Event was successfully completed with a high positive response of participants and the 
+results are announced. They can see the result in event section.</marquee>
+
+<script language="javascript" type="text/javascript">
+var user1="<%= usern %>";
+
+var str1="/resource?user1="+user1;
+var str2="/aboutus?user1="+user1;
+var str3="/announcement?user1="+user1;
+var str4="/logout?user1="+user1;
+var str5="/events?user1="+user1;
+var str6="/home2?user1="+user1;
+function fun(){
+var x=document.getElementById("commentbox")
+x.action ="/comment?user1="+user1;
+}
+openpage1=function()
+{
+location.href=str1;
+}
+openpage2=function()
+{
+location.href=str2;
+}
+openpage3=function()
+{
+location.href=str3;
+}
+openpage4=function()
+{
+location.href=str4;
+}
+openpage5=function()
+{
+location.href=str5;
+}
+openpage6=function()
+{
+location.href=str6;
+}
+
+</script>
+
+<div class="sidenav">
+    <a href="javascript:openpage6()" style="border-style:solid;border-width:1px;border-height:10px;border-radius:50px;text-align:center">Home</a>
+    <a href="javascript:openpage3()" style="border-style:solid;border-width:1px;border-height:10px;border-radius:50px;text-align:center">Announcement</a>
+    <a href="javascript:openpage1()" style="border-style:solid;border-width:1px;border-height:10px;border-radius:50px;text-align:center">Workshop Material</a>
+    <a href="javascript:openpage5()" style="border-style:solid;border-width:1px;border-height:8px;border-radius:50px;text-align:center">Events</a>
+	<a href="javascript:openpage2()" style="border-style:solid;border-width:1px;border-height:8px;border-radius:50px;text-align:center">About Us</a>
+</div> 
+
+<div class="ann-logo"> 
+<i class="material-icons md-48" style="font-size:80px">announcement</i>
+</div>
+
+<div class="ann-write">
+<p><b><u>ANNOUNCEMENT</b></u></p>
+</div>
+
+<div class="material">
+<p>No Announcements to post.</p>
+
+</div>
+<div class='comment'>
+<form id='commentbox' method='post' >
+   
+  Query Type: 
+  <select id="sel" name="type">
+    <option value="Machine Learning ">Machine Learning </option>
+    <option value="Deep Learning">Deep Learning</option>
+    <option value="Algorithm">Algorithm</option>
+    <option value="Miscellaneous">Miscellaneous</option>
+  </select></br>
+  Query:<br />
+  <textarea id="q" name='comment' rows="10" cols="50"  placeholder="Enter Your comment here "></textarea><br />
+  
+  <input type="submit" id='s' onclick="fun()"></br>  
+</form>
+</div>
+</body>
+</html>
